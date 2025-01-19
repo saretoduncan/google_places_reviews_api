@@ -27,8 +27,8 @@ RUN composer install --no-scripts --no-autoloader
 COPY . .
 
 # Set permissions for the web server to access the files
-RUN chown -R www-data:www-data /var/www/html/reviewApi/
-RUN chmod -R 755 /var/www/html/reviewApi/
+RUN chown -R www-data:www-data /var/www/html/r
+RUN chmod -R 755 /var/www/html/
 
 # Install composer dependencies
 RUN composer dump-autoload
