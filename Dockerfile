@@ -27,7 +27,7 @@ RUN composer install --no-scripts --no-autoloader
 COPY . .
 
 # Set permissions for the web server to access the files
-RUN chown -R www-data:www-data /var/www/html/r
+RUN chown -R www-data:www-data /var/www/html/
 RUN chmod -R 755 /var/www/html/
 
 # Install composer dependencies

@@ -3,6 +3,7 @@
 use App\Middlewares\ResponseMiddleware;
 use DI\Bridge\Slim\Bridge;
 use Dotenv\Dotenv;
+use Selective\BasePath\BasePathMiddleware;
 use Slim\Factory\AppFactory;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -12,6 +13,7 @@ $dotEnv->load();
 $app = Bridge::create($container);
 
 $app->addRoutingMiddleware();
+$app->add(new BasePathMiddleware($app));
 $app->addBodyParsingMiddleware();
 $error_middleware = $app->addErrorMiddleware(true, true, true);
 $error_handler = $error_middleware->getDefaultErrorHandler();
