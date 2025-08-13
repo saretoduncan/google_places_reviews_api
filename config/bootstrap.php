@@ -1,5 +1,6 @@
 <?php declare(strict_types=1);
 
+use App\Middlewares\CorsMiddleware;
 use App\Middlewares\ResponseMiddleware;
 use DI\Bridge\Slim\Bridge;
 use Dotenv\Dotenv;
@@ -18,6 +19,7 @@ $app->addBodyParsingMiddleware();
 $error_middleware = $app->addErrorMiddleware(true, true, true);
 $error_handler = $error_middleware->getDefaultErrorHandler();
 $error_handler->forceContentType('application/json');
+$app->add(CorsMiddleware::class);
 $app->add(ResponseMiddleware::class);
 require __DIR__ . '/../config/routes.php';
 
